@@ -26,6 +26,7 @@ module.exports = () => {
       // Places code and converts the service worker to work with the bundle.
       new InjectManifest({
         swSrc: './src-sw.js',
+        // Make sure this makes the name in the index.js
         swDest: 'service-worker.js'
       }),
       // Sets of the mainfest creation for the web app to be downloadable.
