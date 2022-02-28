@@ -27,6 +27,8 @@ module.exports = () => {
         swDest: 'service-worker.js'
       }),
       new WebpackPwaManifest({
+        fingerprints: false,
+        inject: true,
         name: 'J.A.T.E',
         short_name: 'JATE',
         description: 'A Simple Text Editor.',
