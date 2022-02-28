@@ -18,14 +18,17 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
+      // Creates a new HTML file on bundle.
       new HtmlWebpackPlugin({
         template: './index.html',
         title: 'Webpack Plugin'
       }),
+      // Places code and converts the service worker to work with the bundle.
       new InjectManifest({
         swSrc: './src-sw.js',
-        swDest: 'src-sw.js'
+        swDest: 'service-worker.js'
       }),
+      // Sets of the mainfest creation for the web app to be downloadable.
       new WebpackPwaManifest({
         fingerprints: false,
         inject: true,
@@ -50,12 +53,14 @@ module.exports = () => {
       rules: [
         {
           test: /\.css$/i,
+          // Imports CSS into the bundle.
           use: ['style-loader', 'css-loader'],
         },
         {
           test: /\.m?js$/,
           exclude: /node_modules/,
           use: {
+            // Converts our code to an ES5 version in the bundle.
             loader: 'babel-loader',
             options: {
               presets: ['@babel/preset-env'],
