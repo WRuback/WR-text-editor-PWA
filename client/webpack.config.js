@@ -27,7 +27,7 @@ module.exports = () => {
       new InjectManifest({
         swSrc: './src-sw.js',
         // Make sure this makes the name in the index.js
-        swDest: 'service-worker.js'
+        swDest: 'src-sw.js'
       }),
       // Sets of the mainfest creation for the web app to be downloadable.
       new WebpackPwaManifest({
